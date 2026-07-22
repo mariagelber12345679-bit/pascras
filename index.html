@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раскраска по фото</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        canvas {
+            border: 2px solid #333;
+            background-color: white;
+            cursor: crosshair;
+        }
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 250px;
+        }
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+        }
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .color-swatch.active {
+            border-color: #000;
+            transform: scale(1.1);
+        }
+        img {
+            max-width: 150px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        h2 { margin-top: 0; }
+    </style>
+</head>
+<body>
+
+    <h1>Моя Раскраска</h1>
+
+    <div class="container">
+        <!-- Место для рисования -->
+        <canvas id="paintCanvas" width="500" height="500"></canvas>
+
+        <div class="controls">
+            <h2>Палитра (25 цветов)</h2>
+            <div id="palette" class="palette"></div>
+
+            <hr>
+
+            <h3>Оригинал:</h3>
+            <!-- ВАЖНО: Убедитесь, что файл photo.jpg лежит в репозитории! -->
+            <img id="sourceImage" src="photo.jpg" alt="Загрузите photo.jpg в GitHub">
+
+            <button onclick="clearCanvas()" style="margin-top: 20px; padding: 10px; cursor: pointer;">Очистить всё</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
